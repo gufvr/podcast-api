@@ -1,24 +1,12 @@
 import { IncomingMessage, request, ServerResponse } from 'http';
+import { serviceListEpisodes } from '../services/episodes-list-service';
 
 export const getListEpisodes = async (
   req: IncomingMessage,
   res: ServerResponse
 ) => {
+  const content = await serviceListEpisodes();
+
   res.writeHead(200, { 'Content-type': 'application/json' });
-  res.end(
-    JSON.stringify([
-      {
-        podcastName: 'Balela',
-        episodeName: 'POLADO FALANDO BALELA #030',
-        videoId: 'jR7PaeuPhic',
-        categories: ['humor', 'mentality'],
-      },
-      {
-        podcastName: 'Balela',
-        episodeName: 'LUCAS INUTILISMO FALANDO BALELA DE NOVO #94',
-        videoId: 'LtNsLQimmZs',
-        categories: ['humor', 'music'],
-      },
-    ])
-  );
+  res.end(JSON.stringify(content));
 };
