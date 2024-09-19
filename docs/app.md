@@ -24,7 +24,9 @@ List podcast episodes bu sections of categories
 
 ### How I'll implement
 
-Return the name of the podcast, name of the episode, cover image and link on a Rest API (JSON)
+GET: Return episodes list
+
+response:
 
 ```js
 [
@@ -46,3 +48,5 @@ Return the name of the podcast, name of the episode, cover image and link on a R
   },
 ];
 ```
+
+GET: Return episodes list based on podcast name client parameter
