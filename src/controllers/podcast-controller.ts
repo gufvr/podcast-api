@@ -17,9 +17,9 @@ export const getFilterEpisodes = async (
   req: IncomingMessage,
   res: ServerResponse
 ) => {
-  const queryString = req.url?.split('?p=')[1] || '';
+  
 
-  const content = await episodesFilterService(queryString);
+  const content = await episodesFilterService(req.url);
 
   res.writeHead(200, { 'Content-type': 'application/json' });
   res.end(JSON.stringify(content));
