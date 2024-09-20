@@ -4,24 +4,28 @@ import { serviceListEpisodes } from '../services/episodes-list-service';
 import { episodesFilterService } from '../services/episodes-filter-service';
 import { StatusCode } from '../utils/status-code';
 import { ContentType } from '../utils/content-type';
-import { FilterPodcastModel } from '../models/filter-podcast-model';
+import { PodcastTransferModel } from '../models/filter-podcast-model';
 
 export const getListEpisodes = async (
   request: IncomingMessage,
   response: ServerResponse
 ) => {
-  const content = await serviceListEpisodes();
+  const content: PodcastTransferModel = await serviceListEpisodes();
 
-  response.writeHead(StatusCode.OK, { 'Content-type': ContentType.JSON });
-  response.end(JSON.stringify(content));
+  response.writeHead(content.statusCode, { 'Content-type': ContentType.JSON });
+  response.write(JSON.stringify(content.body));
+
+  response.end();
 };
 
 export const getFilterEpisodes = async (
-  req: IncomingMessage,
-  res: ServerResponse
+  request: IncomingMessage,
+  response: ServerResponse
 ) => {
-  const content: FilterPodcastModel = await episodesFilterService(req.url);
+  const content: PodcastTransferModel = await episodesFilterService(request.url);
 
-  res.writeHead(content.statusCode, { 'Content-type': ContentType.JSON });
-  res.end(JSON.stringify(content.body));
+  response.writeHead(content.statusCode, { 'Content-type': ContentType.JSON });
+  response.write(JSON.stringify(content.body));
+  
+  response.end()
 };
