@@ -60,7 +60,7 @@ To set up the Podcast Manager locally, follow these steps:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/podcast-api.git
+git clone https://github.com/gufvr/podcast-api.git
 ```
 
 2. Navigate into the project directory:
