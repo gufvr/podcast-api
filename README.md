@@ -4,6 +4,10 @@
 Podcast Manager is a Netflix-style application that allows users to centralize and manage different podcast episodes by category. With a user-friendly interface, you can explore various episodes, filter them by podcast name, and enjoy a seamless experience with video podcasts.
 </p>
 
+<div align="center">
+    <img src="./assets/cover.svg" alt="Description of the image">
+</div>
+
 ## Domain
 
 This application focuses on video podcasts, making it easy for users to access and enjoy their favorite episodes.
